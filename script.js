@@ -15,14 +15,11 @@ function sendMessage() {
   if (message.length > 0) {
     addMessageToChatHistory(message, true);
     userInput.value = "";
-    fetch("http://localhost:5000/dialogflow", {
+    fetch("http://localhost:5000/chatbot", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
         queryResult: {
-          intent: {
-            displayName: "CustomIntent", // Vous pouvez définir ici le nom de l'intention souhaitée.
-          },
           queryText: message,
         },
       }),
